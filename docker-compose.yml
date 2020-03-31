@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    container_name: "node"
+    command: yarn dev
+    ports:
+      - "3333:3333"
+    environment:
+      - DB_HOST=database
+    volumes:
+      - ".:/usr/app"
+
+  database:
+    image: mongo
+    container_name: "mongo"
+    ports:
+        - "27017:27017"
